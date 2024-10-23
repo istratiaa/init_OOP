@@ -4,6 +4,7 @@
 # а еще через (object._Class__attribute ---> Name Mangling)
 class Person:
     '''данные для хранения персоны'''
+
     def __init__(self, name, age):
         self.__name = name
         self.__age = age
@@ -14,12 +15,16 @@ class Person:
     @property
     def age(self):
         return self.__age
+
     @age.setter
     def age(self, age):
         if 1 > age or age > 120:
             raise ValueError('Age must be in range')
         self.__age = age
 
+    @age.deleter
+    def age(self):
+        del self.__age
 
 
 if __name__ == '__main__':
