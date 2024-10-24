@@ -8,9 +8,10 @@ class Ineger:
     def __set_name__(self, owner, name):
         self.name = "_" + name
     def __get__(self, instance, owner):
-        return instance.__dict__[self.name]
+        return getattr(instance, self.name)
     def __set__(self, instance, value):
-        instance.__dict__[self.name] = value
+        # можно прописать условия для проверки
+        setattr(instance, self.name, value)
 class Person:
     '''данные для хранения персоны'''
 
